@@ -11,7 +11,7 @@
   
 ## The ETL Process
 
-ETL is the common abbriveation of the process which **extracts** raw information from various sources, then cleans or **transforms** this information into data which is able to be analyzed and **loads** it into a single location (or at least single clustoer of locations) so it can be easily shared. Though this seems a simple definition with only a few steps, the reality must deal with the diversity and variety of data that needs to be transformed and loaded, the difficulty in transporting data when it comes in the massive quantities (Tb or Pb) it can, and how new technology can keep this process in flux as it must constantly adapt.
+ETL is the common abbriveation of the process which **extracts** raw information from various sources, then cleans or **transforms** this information into data which is able to be analyzed and **loads** it into a single location (or at least single cluster of locations) so it can be easily shared. Though this seems a simple definition with only a few steps, the reality must deal with the diversity and variety of data that needs to be transformed and loaded, the difficulty in transporting data when it comes in the massive quantities (Tb or Pb) it can, and how new technology can keep this process in flux as it must constantly adapt.
 
 This section will provide some notes on how each step in this process works and how Big Data and new technology have changed it in recent years.
 
