@@ -30,30 +30,53 @@ There are various regulations which effect data and the definition of what is pr
 - Children’s Online Privacy Protection Act 
 - FERPA (Family Educational Rights and Privacy Act) 
 - HIPPA (Health Insurance Portability and Accountability Act of 1996)
-- General Data Protection Regulation (GDPR – Europe) 
 
 #### Privacy Act of 1974
 
-This created the idea of Personal Identifiable Information (PII) and was the first real regulation regarding how it should be handled.
+This created the idea of Personal Identifiable Information (PII) and was the first real regulation regarding how it should be handled. It was the start that nearly everything else (in the US) was built from and [contains three rights](https://www.ssa.gov/privacy/privacy_act_1974.html):
+
+  1. the right to request their records, subject to Privacy Act exemptions
+  2. the right to request a change to their records that are not accurate, relevant, timely or complete
+  3. the right to be protected against unwarranted invasion of their privacy resulting from the collection, maintenance, use, and disclosure of their PII.
+
+All database systems (when properly designed) should have effective methods for handling all three of these issues but the first 2 explicitly. 
 
 #### [Children's Online Privacy Protection Act](https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule)
 
 Ever been to a site or signed up for a service (like Gmail or Stackoverflow or Reddit or ...) which required you to confirm your age before you could use it?
 
 All of this stems from this act. So the main take away from this (at a basic level and in most industry) is:
-- **Don't allow people under the age of 13 to signup for your website** so you don't fall under this
-  - A simple "I am over the age of ..." checkbox is usually fine
-  - If collecting payments: most just have person use a credit card to verify identity and checkbox
-- If you have to (like Nick Jr.'s website): then avoid collecting any PII from these users
-  - Ensure only PII is collected from parents and you get parental conscent before collecting
-- If you **must** collect PII from <13 - consult a lawyer
+  - **Don't allow people under the age of 13 to signup for your website** so you don't fall under this
+    - A simple "I am over the age of ..." checkbox is usually fine
+    - If collecting payments: most just have person use a credit card to verify identity with the above checkbox
+  - If you have to (like Nick Jr.'s website): then avoid collecting any PII from these users
+    - Ensure only PII is collected from parents and you get parental/guardian conscent before collecting
+  - If you **must** collect PII from <13 - consult a lawyer
 
 Basically, if you have a startup or project which is website or has public signup (accounts): you might consider adding that *checkbox* into your signup process.
 
-Oddly enough - this is <ins>not why sites ask if you are over the age of 18</ins>. That has to do with State's and Countries' rules on *"age of consent"*. As, if a website has you sign a contract for a special position or permissions, like [moderator positions](https://meta.stackexchange.com/questions/357379/questions-about-the-new-minimum-age-for-diamond-moderators) or github private repositories, you need to be at the *"age of consent"* for the contract to be binding or they have to get parental/guardian permission) and mature content issues.
+*A Note on 13+ vs. 18+*: Despite the name, the Children's Act is <ins>not why sites ask if you are over the age of 18</ins> it only focuses on information collection of children. The 18+ checkboxes have to do with State's and Countries' rules on *"age of consent"*. These consent regulations (and others) dictate issues such as mature content viewership and the enforability of contracts signed for special positions or permissions. Looking at examples such as a website which offers [moderator positions](https://meta.stackexchange.com/questions/357379/questions-about-the-new-minimum-age-for-diamond-moderators): the site may require signees to be at the *"age of consent"* (which varies by state but is generally 18) for the special position as the agreement for that position needs to be binding but only 14 to use the site itself.
 
-### FERPA
+### [FERPA](https://www2.ed.gov/policy/gen/guid/fpco/ferpa/students.html)
+
+This really only applies to us as this regulation dictates what is considered private information in regards to students. For the most part, it also won't apply to your tasks this year but it can have some *"grey"* areas. A major one being sharing photos and videos of students performing activities at school. To take an example directly from [the Department of Education](https://studentprivacy.ed.gov/faq/faqs-photos-and-videos-under-ferpa)
+
+> If a school maintains a close-up photo of two or three students playing basketball with a general view of student spectators in the background, 
+> the photo is directly related to the basketball players because they are the focus of the photo, but it is not directly related to the students 
+> pictured in the background. Schools often designate photos or videos of students participating in public events (e.g., sporting events, concerts,
+> theater performances, etc.) as directory information and/or obtain consent from the parents or eligible students to publicly disclose photos or
+> videos from these events.
+
+A database field which shows if consent is given (boolean) and a seperate binary field (pdf) which has a copy of the signed consent is usually all that is needed for situations like the above but it is something any site or project which deals with student data needs to consider. 
 
 ### HIPPA
 
-### GDPR (General Data Protection Regulation)
+The Health Insurance Portability and Accountability Act or HIPPA provides the regulations on health related information (in both physical and electronic forms). If you end up building systems for hospitals, insurance companies, or other health related fields: the importance of this regulation is obvious. However, it also affects a number of information systems in somewhat surprising ways.
+
+For instance, one compay I worked for handled loan payments for individuals and part of the system including storing information on deferrment of payments (pausing one's loan payments) which included <ins>hardship due to health related issues</ins>. This meant that this simple banking app, fell under HIPPA because it needed to store some minor records (a file or two) that proved the health issue. A second example would be nearly every HR system I've setup which included <ins>reasons behind sick days or extended leaves of absence</ins> - one of which was part of a lawsuit due to a supervisor entering in a worker's longterm disability into a public record instead of the more secure and confidential file it was suppose to be stored in.
+
+If it is health related, it will probably need to be *"HIPPA Compliant"*.
+
+## Next header
+
+## Next header
