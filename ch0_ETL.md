@@ -37,14 +37,16 @@ the data from these heterogeneous sources*. Sources which can include<sub>1</sub
     - Its actually really common to have a number of individual (local) SQLite DBs that you merge into a single DB
   8. A host of other sources including IoT Devices
   
-So a relitively simple extraction task may be to pull all the data from networked registers in the form of transcation 
-"journals" (DBs or tables), user comments about their experiences (text files), user recording from the phone comment system,
-and online sales files (jsons and full DBs). Then stage them for the "Transformation" process where we will validate, filter, 
-and then clean up these to make it possible to load them into a single datastore.
+![Extract Process](./Image_Files/extract.png)
+
+So a relitively simple extraction task, if say we were trying to find customer satisfaction levels (through sentiment analysis) using social media posts
+and information from cellphone apps. In order to start the "transformation" pcoess (where we validate, filter, and then clean up this information) we will
+need to collect it to a central location. This actually might be several steps, especially when dealing with Big Data. In this case, if there was too much
+data, we might use regional servers to collect data by location then filtering that data to central server.
 
 ## Transforming
 
-This can easily be the **longest and most complicated stage** of the ETL process. It steps vary but all form of transformation aim to *change the raw information collected into usable (queriable or mathmatically calculatable) data*. As a secondary goal, though an important one when dealing with **Big Data**, the transforming stage also *aims at reducing the size of the files* to only the needed data to aid in data transmission. As pushing 2 Tb of raw information over 800 Gb of filtered data - yes, I've reduced data that much when dealing with audio and video files - is a huge performance boon. Though the steps vary, a general version would be:
+This can easily be the **longest and most complicated stage** of the ETL process. It steps vary but all form of transformation aim to *change the raw information collected into usable (queriable or mathmatically calculatable) data*. As a secondary goal, though an important one when dealing with **Big Data**, the transforming stage also *aims at reducing the size of the files* to only the needed data to aid in data transmission - such as with our multiple server approach at the end of "Extracting". Though the steps vary, a general version would be:
    1. Filter data - ignore or don't use/pass to next function specific results typically we:
         - First: simply filter out (ignore) blank results (including empty spaces like *"     "* <- 5 spaces)
            - such as with Python: ```if not line.strip(): #do something``` 
@@ -65,15 +67,26 @@ This can easily be the **longest and most complicated stage** of the ETL process
    3. Change data to useable data structure (load into json, csv, database, or etc. or even just load in a class or Dictionary)
         
  
-Now these are not always ran seperately, in fact the terms ***data munging or data wrangling*** are commonly used to describe the process of extracting and cleaning data at the same time, but can be if data especially when data is pulled from numerious locations or comes in numerous forms where just loading the data for cleaning can be a process. Using the end example from our [extracting](#Extracting) section, the data is will need to be pulled from the various sources so various programs using different file commands, backend operations, automation, and network operations will be needed to just get the data staged for transformation. Then our transformation stage would need filter and clean this gathered data (repeating this process until it is complete) until a single database is output to be loaded into our main database. 
+Now when the data is small or very big: these staps are rarely run seperately. When processed this way we call it ***data munging or data wrangling***: 
+
+  - A **small** example is simple - if the data is small enough there is no reason to seperate these steps
+  - Our multiple server example (the **BIG**) we will need to filter and clean the data before moving to our central location
+  
+Whether this is performed as a seperate program or in the same program that collects the data - its still a seperate step and should be thought of as such. 
+
+To use our example from the [extracting](#Extracting) section, the data would be pulled from the various sources which would require at least 3 programs. The 
+first two would be mobile applications which would use Android's and iOS's different file commands, backend operations, automation, and network operations to 
+collect and stage the data. While the third would use data mining and Social Media APIs (application interfaces) to collect and stage data from our various 
+soccial media platforms. Then our transformation stage would need filter and clean this gathered data (repeating this process until it is complete) while 
+combining it into a single database. This database would be the output we would load into our main database during the final stage. 
 
 ## Loading
 
-This can be the simpliest stage or its own type of complication - it all depends on the data. The main goal is always to *load the data into a single datastore*. Now in our examples case, and in many cases, it could just be loading a database full of the days changes into our main DB. So just simple SELECTs, INSERTs, UPDATEs, and DELETEs queries until all the data is matching (with a backup ran before if your system is designed right). These are pretty standard backend or DBA tasks so in smaller applications not too difficult.
+This can be the simpliest stage or its own type of complication - it all depends on the data. The main goal is always to *load the data into a single datastore*. Now in our examples case, and in many cases, it could just be loading a database full of the days changes into our main DB. So just simple SELECTs, INSERTs, UPDATEs, and DELETEs queries until all the data is matching (with a backup ran before if your system is designed correctly). These are pretty standard backend or DBA tasks so in smaller applications not too difficult.
 
 In large applications, the datastores used may be Data Warehouses, Data Marts, or Data Lakes and updating these is a seperate matter (and gets a whole section unto itself next). In even larger applications, the datastores used may be on multiple servers and require server level operations (and are covered in the Big Data sections).
 
-Loading is where the database design is most tested, as a well-design database takes away from the complexity of nightly updates (even if its more work at the start). Whereas, a poorly designed (un-normalized) relational database tends to lead to more complicated queries, more errors, more table locking, data duplication (more memory usage), and make it much harder to diagnosis and fix errors. It is common to use this stage in ETL projects (when at early stages) to adjust the database design due to this.
+Loading is where the database design is most tested, as a well-design database takes away from the complexity of nightly updates (even if its more work at the start). Whereas, a poorly designed (un-normalized) relational database tends to lead to more complicated queries, more errors, more table locking, data duplication (more memory usage), and make it much harder to diagnosis and fix errors. It is common to use this stage in ETL projects (when at early stages) to adjust the database design as errors or bottlenecks are discovered during loading.
 
 ## Data Warehouse or Database
 
