@@ -27,7 +27,6 @@ Though these two issues are intertwined (and should be studied by all in IT/IS):
 There are various regulations which effect data and the definition of what is private information vs. protected vs. public. Which and what you need to know is nearly completely dependent on what region your company will operate in (think China's definition of *"private"* vs. US definition), what type of data you will be handling, and what type of organization you are. However, there are some broad regulations which all IT/IS students should be aware of:
 
 - Privacy Act of 1974 
-- Children’s Online Privacy Protection Act 
 - FERPA (Family Educational Rights and Privacy Act) 
 - HIPPA (Health Insurance Portability and Accountability Act of 1996)
 
@@ -40,22 +39,6 @@ This created the idea of Personal Identifiable Information (PII) and was the fir
   3. the right to be protected against unwarranted invasion of their privacy resulting from the collection, maintenance, use, and disclosure of their PII.
 
 All database systems (when properly designed) should have effective methods for handling all three of these issues but the first 2 explicitly. 
-
-#### [Children's Online Privacy Protection Act](https://www.ftc.gov/enforcement/rules/rulemaking-regulatory-reform-proceedings/childrens-online-privacy-protection-rule)
-
-Ever been to a site or signed up for a service (like Gmail or Stackoverflow or Reddit or ...) which required you to confirm your age before you could use it?
-
-All of this stems from this act. So the main take away from this (at a basic level and in most industry) is:
-  - **Don't allow people under the age of 13 to signup for your website** so you don't fall under this
-    - A simple "I am over the age of ..." checkbox is usually fine
-    - If collecting payments: most just have person use a credit card to verify identity with the above checkbox
-  - If you have to (like Nick Jr.'s website): then avoid collecting any PII from these users
-    - Ensure only PII is collected from parents and you get parental/guardian conscent before collecting
-  - If you **must** collect PII from <13 - consult a lawyer
-
-Basically, if you have a startup or project which is website or has public signup (accounts): you might consider adding that *checkbox* into your signup process.
-
-*A Note on 13+ vs. 18+*: Despite the name, the Children's Act is <ins>not why sites ask if you are over the age of 18</ins> it only focuses on information collection of children. The 18+ checkboxes have to do with State's and Countries' rules on *"age of consent"*. These consent regulations (and others) dictate issues such as mature content viewership and the enforability of contracts signed for special positions or permissions. Looking at examples such as a website which offers [moderator positions](https://meta.stackexchange.com/questions/357379/questions-about-the-new-minimum-age-for-diamond-moderators): the site may require signees to be at the *"age of consent"* (which varies by state but is generally 18) for the special position as the agreement for that position needs to be binding but only 14 to use the site itself.
 
 ### [FERPA](https://www2.ed.gov/policy/gen/guid/fpco/ferpa/students.html)
 
