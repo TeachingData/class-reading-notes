@@ -61,9 +61,9 @@ If it is health related, it will probably need to be *"HIPPA Compliant"*.
 
 ## Types of vulnerabilities and issues
 
-    1. Injection
-    2. Broken Authentication
-    3. “Sensitive Data Exposure”
+   1. Injection
+   2. Broken Authentication
+   3. “Sensitive Data Exposure”
 
 We will look at one of these and one other issue not listed.
 
@@ -76,10 +76,11 @@ This tactic tries to manipulate or deceive a user or employee in order to gain e
 Social engineering attacks run the gamet from mass phishing attacks to fully invested teams investigating possible victims to gather background information, both as a business (finding weak security protocols) and as individual (using people's history to find "ins"), before attempting an attack. Usually using this information in multiple attacks which build on each other to find holes to exploit before taking full control or gaining full access to information.
 
 Social Engineering includes (not exhaustive list):
-    1. **Phishing**: See any college's manditory training on "phishing". I will only note that *phishing* does not mean email. SMS messages (text) and Social Media attacks (discord, twitter, etc) are used for phishing as well with **text and phone calls seeing an exponential increase this last year**.
-    2. **Tailgating**: A person with no authentication will follow an employee into a secured area. This is everything from impersonating a delivery driver to gain access to a floor to just running up and having employee hold open the door *because its polite*.
-    3. **Scareware**: The sunsetting of IE has seen more of these this year. Malicious javascript which full screens and locks a browser open (making it look like your computer is "frozen") and plays audio or displays text telling you to *"call us to unlock your device"* is one of the most common. But any software exploit which *makes it look like* your locked out is a form of this (in the last example restarting or killing the process would "fix" the problem).
-    4. **Ransomware**: The worse form of above, typically involves someone calling the number given in the scareware example and then allowing someone to remote-in with full access. It is always something that locks a user or group of users (in a business) out of their device(s) - **the best defense for this is training, proper firewalls (lock out external access), and proper backups (to recover after & use as a comparison to determine data loss)**
+
+   1. **Phishing**: See any college's manditory training on "phishing". I will only note that *phishing* does not mean email. SMS messages (text) and Social Media attacks (discord, twitter, etc) are used for phishing as well with **text and phone calls seeing an exponential increase this last year**.
+   2. **Tailgating**: A person with no authentication will follow an employee into a secured area. This is everything from impersonating a delivery driver to gain access to a floor to just running up and having employee hold open the door *because its polite*.
+   3. **Scareware**: The sunsetting of IE has seen more of these this year. Malicious javascript which full screens and locks a browser open (making it look like your computer is "frozen") and plays audio or displays text telling you to *"call us to unlock your device"* is one of the most common. But any software exploit which *makes it look like* your locked out is a form of this (in the last example restarting or killing the process would "fix" the problem).
+   4. **Ransomware**: The worse form of above, typically involves someone calling the number given in the scareware example and then allowing someone to remote-in with full access. It is always something that locks a user or group of users (in a business) out of their device(s) - **the best defense for this is training, proper firewalls (lock out external access), and proper backups (to recover after & use as a comparison to determine data loss)**
 
 ## Protecting Against
 
@@ -91,6 +92,7 @@ The data backups and automation for preventing ransomware (or any unwanted acces
     4. Either block access for IPs directly (usually suspend), Isolate the access of an IP, or report to admin using a notification (Act)
 
 We call this an OODA loop and its a common method of building AI/ML bots for automated access and protective control systems. It is not the only form of automated protection but these can (and are) a whole course unto themselves. What needs to be stated is these should not be the only form of protection, rather one must practice a **"Defense in Depth" (DOD) strategy** which builds in multiple layers of protection and access controls. For our example:
+
 - Using Direct Access controls to setup layers (Student access allows one to join a class, "graduate TA" or Professor access is needed to see grades)
 - Ensure all developers understand the need (and how to use) prepared statements (or move to 2-tier development)
 - Building logging into the development teams' policies (i.e. dev teams actually add documentation and logging as they build)
