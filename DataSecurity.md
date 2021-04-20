@@ -6,9 +6,7 @@
 ## Sections:
 1. [Data Protection vs. Data Privacy](#data-protection-vs-data-privacy)
 2. [Regulations effecting Data](#regulations-effecting-data)
-    - [License and Copywrite vs. Regulation](#license-and-copywrite-vs-regulation)  
 3. [Types of vulnerabilities and issues](#types-of-vulnerabilities-and-issues)
-4. [Protection methods (as related to Intro to Data Engineering)](#protection-methods)
 
 ## Data Protection vs Data Privacy
 
@@ -54,12 +52,39 @@ A database field which shows if consent is given (boolean) and a seperate binary
 
 ### HIPPA
 
-The Health Insurance Portability and Accountability Act or HIPPA provides the regulations on health related information (in both physical and electronic forms). If you end up building systems for hospitals, insurance companies, or other health related fields: the importance of this regulation is obvious. However, it also affects a number of information systems in somewhat surprising ways.
+The Health Insurance Portability and Accountability Act or HIPPA provides the regulations on health related information (in both physical and electronic forms). If you end up building systems for hospitals, insurance companies, or other health related fields: the importance of this regulation is obvious. However, it also affects a number of  information systems in somewhat surprising ways.
 
 For instance, one compay I worked for handled loan payments for individuals and part of the system including storing information on deferrment of payments (pausing one's loan payments) which included <ins>hardship due to health related issues</ins>. This meant that this simple banking app, fell under HIPPA because it needed to store some minor records (a file or two) that proved the health issue. A second example would be nearly every HR system I've setup which included <ins>reasons behind sick days or extended leaves of absence</ins> - one of which was part of a lawsuit due to a supervisor entering in a worker's longterm disability into a public record instead of the more secure and confidential file it was suppose to be stored in.
 
 If it is health related, it will probably need to be *"HIPPA Compliant"*.
 
-## Next header
+## Types of vulnerabilities and issues
 
-## Next header
+    1. Injection
+    2. Broken Authentication
+    3. “Sensitive Data Exposure”
+
+We will look at one of these and one other issue not listed.
+
+#### Injection
+These are not an all inclusive list, for instance it doesn't meantion ***social engineering*** issues. However, it **must** be noted that **Injection has been the number 1 vulnerability for more than 5 years**. One should learn lessons and improve software design year to year but legacy software and programmers [failing to sanitize their inputs](https://www.explainxkcd.com/wiki/index.php/327:_Exploits_of_a_Mom) have been a continuing thorn in the side of data protection and look to remain a trend. Though it is not the only step in preventing this, it is the first: [Always use prepared statements](https://bobby-tables.com/).
+
+#### Social Engineering
+This tactic tries to manipulate or deceive a user or employee in order to gain entry into a computer system or steal personal or private information. Though the *"social"* points to its main usage (through social media including simple email) the full field of social engineering employees full psychological manipulation to trick users into making mistakes or giving away too much information.
+
+Social engineering attacks run the gamet from mass phishing attacks to fully invested teams investigating possible victims to gather background information, both as a business (finding weak security protocols) and as individual (using people's history to find "ins"), before attempting an attack. Usually using this information in multiple attacks which build on each other to find holes to exploit before taking full control or gaining full access to information.
+
+Social Engineering includes (not exhaustive list):
+    1. **Phishing**: See any college's manditory training on "phishing". I will only note that *phishing* does not mean email. SMS messages (text) and Social Media attacks (discord, twitter, etc) are used for phishing as well with **text and phone calls seeing an exponential increase this last year**.
+    2. **Tailgating**: A person with no authentication will follow an employee into a secured area. This is everything from impersonating a delivery driver to gain access to a floor to just running up and having employee hold open the door *because its polite*.
+    3. **Scareware**: The sunsetting of IE has seen more of these this year. Malicious javascript which full screens and locks a browser open (making it look like your computer is "frozen") and plays audio or displays text telling you to *"call us to unlock your device"* is one of the most common. But any software exploit which *makes it look like* your locked out is a form of this (in the last example restarting or killing the process would "fix" the problem).
+    4. **Ransomware**: The worse form of above, typically involves someone calling the number given in the scareware example and then allowing someone to remote-in with full access. It is always something that locks a user or group of users (in a business) out of their device(s) - **the best defense for this is training, proper firewalls (lock out external access), and proper backups (to recover after & use as a comparison to determine data loss)**
+
+The data backups and automation for preventing ransomware (or any unwanted access) are the realm of data engineering. As it is typically the network admin, data engineers, and devops who build Machine Learning based bots that:
+
+    1. Scan access records to see what IPs are accessing the system and determine if any are not allowed or unknown (Observe)
+    2. Scan Log files to determine if anything looks out of the ordinary based on training data (the previous logs, Orient)
+    3. Determines what action needs to be taken based on these differences using other training data (previous incidents with results, Decide)
+    4. Either block access for IPs directly (usually suspend), Isolate the access of an IP, or report to admin using a notification (Act)
+
+We call this an OODA loop and its a common method of building AI/ML bots for automated access and protective control systems. It is not the only form of automated protection but these can (and are) a whole course unto themselves.
