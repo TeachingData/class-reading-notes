@@ -96,3 +96,5 @@ We call this an OODA loop and its a common method of building AI/ML bots for aut
 - Building logging into the development teams' policies (i.e. dev teams actually add documentation and logging as they build)
   - These should be standardized to allow for better processing later
 - Use automation to scan and process Logs (AI/ML)
+
+As data engineers, this is the most we can do to protect. However, one should always be an advocate for proper training (at all levels) of an organization to prevent the Social Engineering attacks from ever getting a foot in the door (sometimes literally).
