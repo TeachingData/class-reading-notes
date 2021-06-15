@@ -12,7 +12,7 @@
 
 ETL is the common abbriveation of the process which **extracts** and stages raw information from various sources, then cleans or **transforms** this information into data which is able to be analyzed (or at least a single file format) and **loads** it into a single location (or at least a single cluster of locations) so it can be easily shared. 
 
-![ETL Process Overview](./Image_Files/ETLOverview.png)
+![ETL Process Overview](../Image_Files/ETLOverview.png)
 
 Though this seems a simple process with only a few steps, in reality it must deal with a diverse variety of data, the difficulty in transporting data when it comes in massive quantities (Tb or Pb), and new technology which change and add input types that must be constantly adapted to.
 
@@ -39,7 +39,7 @@ the data from these heterogeneous sources*. Sources which can include<sub>1</sub
   
 **An Example of Extracting**
 
-![Extract Process](./Image_Files/extract.png)
+![Extract Process](../Image_Files/extract.png)
 
 The above is a relitively simple extraction task, assume we are trying to find customer satisfaction levels by analyzing customer social media posts
 and information from cellphone apps. In order to start the "transformation" pcoess, we will need to extract and then collect all the user provided information
