@@ -3,7 +3,7 @@ When I began my career the operating systems of the time where UNIX and Dos (Win
 
 ![basicUbuntuServer](/Image_Files/ServerSetup.png)
 
-As \*nix systems remain the top choice in servers and networking, understanding their **shell** has remained an important factor for IT, IS, and Networking professionals (true of MS Server as well as the *ability to automate tasks with Powershell* is considered an essiential skill). This article, part of an Intro to Networking class, we will overview the shell scripting commands most used in Powershell and bash (standard Linux Shell) - full coverage is provided in the "Scripting" course.
+As \*nix systems remain the top choice in servers and networking, understanding their **shell** has remained an important factor for IT, IS, and Networking professionals (true of MS Server as well as the *ability to automate tasks with Powershell* is considered an essiential skill). As part of an Intro to Networking class, this article will overview the shell scripting commands most used in Powershell and bash (standard Linux Shell) - full coverage is provided in the "Scripting" course.
 
 ---
 ---
