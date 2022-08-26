@@ -134,9 +134,6 @@ No real powershell equivilent (can use *-RunAs* flag but its not the same). SU i
     #Powershell as close as you can (it opens a new window)
     Start-Process netstat -ArgumentList "-ab" -Verb runas
 
-### Ifconfig: Change to IP?
-Tuning and debuging of network....add IP
-
 ### Netstat: Displays general network information
 Can be used to display:
  - routing tables (can also use `route PRINT`)
