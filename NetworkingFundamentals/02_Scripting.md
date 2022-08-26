@@ -1,7 +1,7 @@
 # Shells
 When I began my career the operating systems of the time where UNIX and Dos (Windows 3.1 was the new player on the block) so all computer users were expected to be well-versed in batch and shell commands. As hardware has improved (in cost and ability), GUIs have come to rule the computer and one's ability to use a **shell** has become less and less of a univeral need. **Except when dealing with Servers**, where my standard setup still looks like:
 
-![basicUbuntuServer](/Images/ServerSetup.png)
+![basicUbuntuServer](/Image_Files/ServerSetup.png)
 
 As \*nix systems remain the top choice in servers and networking, understanding their **shell** has remained an important factor for IT, IS, and Networking professionals. Even for Windows systems (MS Servers) the *ability to automate tasks with Powershell* is considered an essiential skill. This article, part of an Intro to Networking class, we will overview the shell scripting commands most used in Powershell and bash (standard Linux Shell) - full coverage is provided in the "Scripting" course.
 
