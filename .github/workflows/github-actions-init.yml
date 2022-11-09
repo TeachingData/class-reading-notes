@@ -1,0 +1,17 @@
+name: Init Github Actions
+run-name: ${{ github.actor }} is verifying GitHub Actions functions
+on: [edited, push]
+jobs:
+  Simple-Notify-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job triggered by ${{ github.event_name }} event."
+      - run: echo "Running on ${{ runner.os }} server"
+      - run: echo "branch ${{ github.ref }} and repository ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "Cloned, workflow will list files in directory"
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "Complete with status ${{ job.status }}."
