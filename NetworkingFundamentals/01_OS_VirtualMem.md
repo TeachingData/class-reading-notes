@@ -46,13 +46,13 @@ virtual memory help to deal with memory limitations. We can keep assigning *"add
 
 While just being able to schedule items when we run out of ram is nice, its the ability to page in/out that is the heart of this technique. Let's first look at what would happen if we just manipulated the Physical Memory directly and removed a few processes. So assume I have the following running and its been loaded into our frames like:
 
-![physical memory usage linear graph](/Image_Files/runningprograms.png)
+![physical memory usage linear graph](/Image_Files/RunningPrograms.png)
 
 This is nice and not much is wasted here but suppose we need to add a program (we want to open Python's IDLE), currently we cannot do this as we are completely full. With virtual memory, we can start the process, load it into the pages table, and then let the scheduler handle what program will be removed from memory to make room (likely one which is not in focus or background apps) - think of the spinning circle that your mouse cursor becomes when you open a new program. 
 
 Why is this important? Well, let's say we hate virtual memory and want to handle it ourselves (besides we are done with notepad and have moved our files) so we close those two programs. We run into this problem:
 
-![physical memory requires congruent slots](/Image_Files/runningprograms2.png)
+![physical memory requires congruent slots](/Image_Files/RunningPrograms2.png)
 
 We have enough memory to run it if we combine what Notepad and Files left but they are not sequential so there is no way to assign it to that without moving multiple processes (requiring every memory address of every function, dependency, variable, etc. to move). Using a virtual mapping (and our pages table) the process is much simplier:
 
