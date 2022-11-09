@@ -39,7 +39,9 @@ Each of these are then stored in tables (a frame table and page table - confusin
 
 ![virtual mapping of tables](/Image_Files/virtualmapping.png)
 
-The advantage of this is if we need to switch a process. Then our scheduler (using a standard algorithm) can determine which page needs to be paged out and which needs paged in. Freeing and then re-using the frames needed.
+The advantage of this is if we need to switch a process. Then our scheduler (using a standard algorithm) can determine which page needs to 
+be paged out and which needs paged in. Freeing and then re-using the frames needed.
+
 ----------
 
 [^1]: Technically the memory hierarchy (minimum access time to maximum) would be: CPU Registers, SRAM (Cache), Main Memory (DRAM), Hard Disk Drive, Solid State Drive but we are trying to keep something simple here.
