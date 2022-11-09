@@ -9,10 +9,10 @@ While the amount processes need varies from nearly nothing to Gbs (such as notep
 will fork multiple applications (processes) simultaneously, and count the usage of each of these starving processes against the expensive, finite memory available.
 
 Given this, we find the OS has two requirements:
-  1.	That the software always runs until user aborts it, i.e. it should not auto-abort because OS has run out of memory.
-  2.	The above activity, while maintaining a respectable performance for the softwares running.
+  1.	Processes must be able to run until the user interrupts or terminates it (it shouldn't die due to lack of resources)
+  2.	While maintaining point 1: we should not sacrifice performance to such a level that it is unusable or "slow"
 
-Which, as students studying an OS, the questions of how the memory is being managed and what governs where the data from a process belongs in memory?
+Which, as students studying an OS, begs the questions of how the memory is being managed and what governs where the data from a process belongs in memory?
 
 ## Physical Memory Issues
 
