@@ -1,6 +1,6 @@
 name: Init Github Actions
 run-name: ${{ github.actor }} is verifying GitHub Actions functions
-on: [edited, push]
+on: [push]
 jobs:
   Simple-Notify-Test:
     runs-on: ubuntu-latest
