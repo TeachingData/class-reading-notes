@@ -39,8 +39,31 @@ Each of these are then stored in tables (a frame table and page table - confusin
 
 ![virtual mapping of tables](/Image_Files/virtualmapping.png)
 
-The advantage of this is if we need to switch a process. Then our scheduler (using a standard algorithm) can determine which page needs to 
-be paged out and which needs paged in. Freeing and then re-using the frames needed.
+Note, that the memory needed (page table) is greater then the memory in system (frame table) which happens fairly often. This is the first part of how paging and 
+virtual memory help to deal with memory limitations. We can keep assigning *"addresses"* as the system runs out of memory without having to force quit (interrupt) items running in the foreground (the priority). The programs don't really care if the addresses are virtual, only that it points to the resources they need when they run. This is why it is abstraction, the OS uses its scheduler (with its various algorithms) to set the state of processes while the program is happy to ignore the fact that it memory address isn't quite at a physical address yet as it knows the address it has will be when the system is ready. 
+
+## Page-in, Page-out
+
+While just being able to schedule items when we run out of ram is nice, its the ability to page in/out that is the heart of this technique. Let's first look at what would happen if we just manipulated the Physical Memory directly and removed a few processes. So assume I have the following running and its been loaded into our frames like:
+
+![physical memory usage linear graph](/Image_Files/runningprograms.png)
+
+This is nice and not much is wasted here but suppose we need to add a program (we want to open Python's IDLE), currently we cannot do this as we are completely full. With virtual memory, we can start the process, load it into the pages table, and then let the scheduler handle what program will be removed from memory to make room (likely one which is not in focus or background apps) - think of the spinning circle that your mouse cursor becomes when you open a new program. 
+
+Why is this important? Well, let's say we hate virtual memory and want to handle it ourselves (besides we are done with notepad and have moved our files) so we close those two programs. We run into this problem:
+
+![physical memory requires congruent slots](/Image_Files/runningprograms2.png)
+
+We have enough memory to run it if we combine what Notepad and Files left but they are not sequential so there is no way to assign it to that without moving multiple processes (requiring every memory address of every function, dependency, variable, etc. to move). Using a virtual mapping (and our pages table) the process is much simplier:
+
+![page out and page in](/Image_Files/virtualmapping2.png)
+
+Here the mapping just changed from process 4 to process 2 due to "*something*" happening in the system that required this. This allows us to **page-out** process 4 (freezing its state in the pages table) then reuse the frames by assigning their mapping to process 2. Which should sound familar to the explainations in class, except now your beginning to see the internals.
+
+## Conclusion
+This is just meant as a quick introduction and concept model to learn about virtual memory, swapping, and paging. That makes it a bit of a cartoon model but a nesscary one because I could write a book on paging alone (and have for databases). The final concept to expain is this: **all of these are used by your OS**. Your OS is not a single algorithm or just the scheduler and dispatcher, it is everything we've covered in a 16 week course that barely scratches the surface. Which is really the magic of abstraction that an OS provides - we build and run our programs unaware of the complexity of the machine it is running on.
+
+However, by pulling back that curtain and seeing the internal workings - one will become a better engineer. As knowing how something works, planning an improvement or better system, and then building it - is truly the heart of engineering.
 
 ----------
 
