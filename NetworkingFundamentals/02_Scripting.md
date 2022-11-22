@@ -142,8 +142,23 @@ Can be used to display:
  - interface statistics
  - even more
 
+### IP
+This command allows admin to setting up new system, assign IPs addresses (for troubleshooting), show address information, manipulate routing, and display various information around devices, interfaces, and tunnels. For example, the following shows the ip addresses assigned to interfaces on your computer/server:
+
+    ip address show
+
+![image](https://user-images.githubusercontent.com/8454537/203440541-88a9f8f2-78e2-4b23-be8f-b3cd32cfc8fb.png)
+
 ### Nslookup: Displays the information of servers. 
 Queries DNS and fetches information (ip address).
+
+### Traceroute and MTR
+mtr is the updated version of traceroute, both work like ping in that they send a signal to the specified address. However, they also trace the route the signal takes to reach its endpoint and display that information. This allows one to check for weak and malfunctioning spots on a network as well as diagnosis when one starts to see a large amount of packet loss. For example, running this (and starting at route point 6) one would see that our computer uses Comcast.
+
+    mtr www.google.com 
+    # mtr –udp google.com # would force udp over tcp
+
+![image](https://user-images.githubusercontent.com/8454537/203441439-f9a6d239-e7a7-4021-8541-7be0e50ab8b7.png)
 
 ### Uptime / Get-Uptime: Gives the uptime of server
 Whenever server is left unattended this can be queried (ran) to determine if any downtime happened. Easy to automate by just redirecting (see below) to a log which is periodically checked.
