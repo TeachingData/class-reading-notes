@@ -2,5 +2,5 @@
 Reading material for Networking Fundamentals course and extra reading material Intro. Data Engineering course.
 
 **Will be organized by text book chapter and subject as applicable**
-##### Data Engineering Textbook: Beginning Database Design Solutions by Rod Stephens (ISBN: 978-0-470-38579-4)
+##### Database System Concepts (7th ed.) by Silberschatz, Korth, Sudarshan (ISBN: 978-126-051504-6)
 ##### Networking Fundamentals Textbook: None
