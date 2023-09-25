@@ -5,8 +5,6 @@
 2. [Extracting](#Extracting)
 3. [Transforming](#Transforming)
 4. [Loading](#Loading)
-5. [Data Warehouse or Database](#Data_Warehouse_or_Database)
-    - [ELT](#ELT)
   
 ## The ETL Process
 
