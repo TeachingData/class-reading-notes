@@ -1,7 +1,7 @@
 # Table of Contents
 This provides an overview of Bash scripting (and only Bash; see CreatingPSFiles for PowerShell) with the following sections:
 
-  1. Text Editors vs. IDEs
+  1. [Text Editors vs. IDEs](#TextEditorvsIDE)
   2. Variables in Bash
   3. Controling the flow (if/else)
   4. Looping (while & for)
